@@ -1,0 +1,3 @@
+Je teste les envois de mail depuis mon serveur PHP, avec les versions
+vu en cours, on a commencé ce cours
+aujourd'hui.

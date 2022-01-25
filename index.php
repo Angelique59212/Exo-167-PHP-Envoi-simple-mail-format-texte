@@ -6,11 +6,11 @@
  * 3. Déployez sur votre serveur et testez !
  */
 
-$from = '';
-$to = '';
-$message = 'Hello World, sending a simple mail !';
-// TODO Votre code ici.
-
+$from = 'angelique.dehainaut59@gmail.com';
+$to = 'dehainaut.angelique@orange.fr';
+//$message = 'Hello World, sending a simple mail !';
+//// TODO Votre code ici.
+//mail('dehainaut.angelique@orange.fr', 'test', $message);
 
 /**
  * 4. Commentez le code précédent, mais gardez les variables $from et $to
@@ -24,3 +24,21 @@ $message = 'Hello World, sending a simple mail !';
  *     N'écrasez pas les valeurs déjà existantes ( s'il y en a ).
  */
 // TODO Votre code ici.
+$subject = "Mail avec en-tête";
+$message = "Je teste les envois de mail depuis mon serveur PHP, avec les versions vu en cours, on a commencé ce cours
+aujourd'hui.";
+$message = wordwrap($message, 70,"\r\n");
+$headers = [
+    'Reply-to' => 'dehainaut.angelique@orange.fr',
+    'X-Mailer' => 'PHP/' .phpversion(),
+];
+mail($to,$subject, $message,$headers, "-f angelique.dehainaut59@gmail.com");
+
+// Message error or success
+if (mail($to, $subject, $message, $headers)) {
+    echo "Email envoyé avec succès à $to ...";
+} else {
+    echo "Échec de l'envoi de l'email...";
+}
+
+file_put_contents('mails.txt', $message);
